@@ -46,7 +46,7 @@
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.8" />
         <PackageReference Include="Soenneker.TimeZones.Data" Version="4.0.25" PrivateAssets="analyzers;build" />
         <PackageReference Include="Soenneker.Utils.AsyncSingleton" Version="4.0.788" />
-        <PackageReference Include="Soenneker.Utils.File" Version="4.0.2157" />
+        <PackageReference Include="Soenneker.Utils.File" Version="4.0.2158" />
         <PackageReference Include="Soenneker.Utils.Paths.Resources" Version="4.0.149" />
     </ItemGroup>
 </Project>
