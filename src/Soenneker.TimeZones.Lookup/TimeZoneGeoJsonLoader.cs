@@ -10,6 +10,9 @@ using Soenneker.Utils.Paths.Resources.Abstract;
 
 namespace Soenneker.TimeZones.Lookup;
 
+/// <summary>
+/// Represents the time zone geo json loader.
+/// </summary>
 public sealed class TimeZoneGeoJsonLoader
 {
     private static readonly string[] ResourceFileNames = ["timezones.geojson", Path.Combine("Data", "timezones.geojson")];
