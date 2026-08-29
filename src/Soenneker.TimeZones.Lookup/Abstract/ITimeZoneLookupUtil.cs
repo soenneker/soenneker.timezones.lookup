@@ -14,5 +14,6 @@ public interface ITimeZoneLookupUtil
     /// <param name="latitude">Latitude in decimal degrees. Must be between -90 and 90.</param>
     /// <param name="longitude">Longitude in decimal degrees. Must be between -180 and 180.</param>
     /// <param name="cancellationToken">A cancellation token.</param>
+    /// <returns>A task whose result is the text returned by get Time Zone ID.</returns>
     ValueTask<string?> GetTimeZoneId(double latitude, double longitude, CancellationToken cancellationToken = default);
 }
