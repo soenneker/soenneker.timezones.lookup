@@ -28,16 +28,16 @@ public sealed class TimeZoneLookupUtilTests : HostedUnitTest
     }
 
     [Test]
-    public async Task GetTimeZoneId_should_resolve_real_locations_from_packaged_data()
+    public async Task GetTimeZoneId_should_resolve_real_locations_from_packaged_data(CancellationToken cancellationToken)
     {
-        string? chicago = await _util.GetTimeZoneId(41.8781, -87.6298);
-        string? newYork = await _util.GetTimeZoneId(40.7128, -74.0060);
-        string? losAngeles = await _util.GetTimeZoneId(34.0522, -118.2437);
-        string? denver = await _util.GetTimeZoneId(39.7392, -104.9903);
-        string? honolulu = await _util.GetTimeZoneId(21.3069, -157.8583);
-        string? tokyo = await _util.GetTimeZoneId(35.6762, 139.6503);
-        string? sydney = await _util.GetTimeZoneId(-33.8688, 151.2093);
-        string? abidjan = await _util.GetTimeZoneId(5.36, -4.0083);
+        string? chicago = await _util.GetTimeZoneId(41.8781, -87.6298, cancellationToken: cancellationToken);
+        string? newYork = await _util.GetTimeZoneId(40.7128, -74.0060, cancellationToken: cancellationToken);
+        string? losAngeles = await _util.GetTimeZoneId(34.0522, -118.2437, cancellationToken: cancellationToken);
+        string? denver = await _util.GetTimeZoneId(39.7392, -104.9903, cancellationToken: cancellationToken);
+        string? honolulu = await _util.GetTimeZoneId(21.3069, -157.8583, cancellationToken: cancellationToken);
+        string? tokyo = await _util.GetTimeZoneId(35.6762, 139.6503, cancellationToken: cancellationToken);
+        string? sydney = await _util.GetTimeZoneId(-33.8688, 151.2093, cancellationToken: cancellationToken);
+        string? abidjan = await _util.GetTimeZoneId(5.36, -4.0083, cancellationToken: cancellationToken);
 
         chicago.Should().Be("America/Chicago");
         newYork.Should().Be("America/New_York");
@@ -50,41 +50,41 @@ public sealed class TimeZoneLookupUtilTests : HostedUnitTest
     }
 
     [Test]
-    public async Task GetTimeZoneId_should_return_matching_tzid()
+    public async Task GetTimeZoneId_should_return_matching_tzid(CancellationToken cancellationToken)
     {
         var util = new TimeZoneLookupUtil(_geoJsonLoader, CreateGeoJsonStream);
 
-        string? result = await util.GetTimeZoneId(5, 5);
+        string? result = await util.GetTimeZoneId(5, 5, cancellationToken: cancellationToken);
 
         result.Should().Be("Etc/Test");
     }
 
     [Test]
-    public async Task GetTimeZoneId_should_return_null_when_no_polygon_contains_coordinate()
+    public async Task GetTimeZoneId_should_return_null_when_no_polygon_contains_coordinate(CancellationToken cancellationToken)
     {
         var util = new TimeZoneLookupUtil(_geoJsonLoader, CreateGeoJsonStream);
 
-        string? result = await util.GetTimeZoneId(50, 50);
+        string? result = await util.GetTimeZoneId(50, 50, cancellationToken: cancellationToken);
 
         result.Should().BeNull();
     }
 
     [Test]
-    public async Task GetTimeZoneId_should_exclude_polygon_holes()
+    public async Task GetTimeZoneId_should_exclude_polygon_holes(CancellationToken cancellationToken)
     {
         var util = new TimeZoneLookupUtil(_geoJsonLoader, CreateGeoJsonStream);
 
-        string? result = await util.GetTimeZoneId(14, 14);
+        string? result = await util.GetTimeZoneId(14, 14, cancellationToken: cancellationToken);
 
         result.Should().BeNull();
     }
 
     [Test]
-    public async Task GetTimeZoneId_should_throw_for_invalid_latitude()
+    public async Task GetTimeZoneId_should_throw_for_invalid_latitude(CancellationToken cancellationToken)
     {
         var util = new TimeZoneLookupUtil(_geoJsonLoader, CreateGeoJsonStream);
 
-        Func<Task> action = async () => await util.GetTimeZoneId(91, 0);
+        Func<Task> action = async () => await util.GetTimeZoneId(91, 0, cancellationToken: cancellationToken);
 
         await action.Should().ThrowAsync<ArgumentOutOfRangeException>();
     }
