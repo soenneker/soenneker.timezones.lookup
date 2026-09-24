@@ -27,4 +27,7 @@
         <ProjectReference Include="..\..\src\Soenneker.TimeZones.Lookup\Soenneker.TimeZones.Lookup.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <PackageReference Include="AwesomeAssertions" Version="9.6.0" />
+    </ItemGroup>
 </Project>
