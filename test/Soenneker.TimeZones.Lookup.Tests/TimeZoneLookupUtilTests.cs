@@ -28,7 +28,7 @@ public sealed class TimeZoneLookupUtilTests : HostedUnitTest
     }
 
     [Test]
-    public async Task GetTimeZoneId_should_resolve_real_locations_from_packaged_data(CancellationToken cancellationToken)
+    public async ValueTask GetTimeZoneId_should_resolve_real_locations_from_packaged_data(CancellationToken cancellationToken)
     {
         string? chicago = await _util.GetTimeZoneId(41.8781, -87.6298, cancellationToken: cancellationToken);
         string? newYork = await _util.GetTimeZoneId(40.7128, -74.0060, cancellationToken: cancellationToken);
@@ -50,7 +50,7 @@ public sealed class TimeZoneLookupUtilTests : HostedUnitTest
     }
 
     [Test]
-    public async Task GetTimeZoneId_should_return_matching_tzid(CancellationToken cancellationToken)
+    public async ValueTask GetTimeZoneId_should_return_matching_tzid(CancellationToken cancellationToken)
     {
         var util = new TimeZoneLookupUtil(_geoJsonLoader, CreateGeoJsonStream);
 
@@ -60,7 +60,7 @@ public sealed class TimeZoneLookupUtilTests : HostedUnitTest
     }
 
     [Test]
-    public async Task GetTimeZoneId_should_return_null_when_no_polygon_contains_coordinate(CancellationToken cancellationToken)
+    public async ValueTask GetTimeZoneId_should_return_null_when_no_polygon_contains_coordinate(CancellationToken cancellationToken)
     {
         var util = new TimeZoneLookupUtil(_geoJsonLoader, CreateGeoJsonStream);
 
@@ -70,7 +70,7 @@ public sealed class TimeZoneLookupUtilTests : HostedUnitTest
     }
 
     [Test]
-    public async Task GetTimeZoneId_should_exclude_polygon_holes(CancellationToken cancellationToken)
+    public async ValueTask GetTimeZoneId_should_exclude_polygon_holes(CancellationToken cancellationToken)
     {
         var util = new TimeZoneLookupUtil(_geoJsonLoader, CreateGeoJsonStream);
 
@@ -80,7 +80,7 @@ public sealed class TimeZoneLookupUtilTests : HostedUnitTest
     }
 
     [Test]
-    public async Task GetTimeZoneId_should_throw_for_invalid_latitude(CancellationToken cancellationToken)
+    public async ValueTask GetTimeZoneId_should_throw_for_invalid_latitude(CancellationToken cancellationToken)
     {
         var util = new TimeZoneLookupUtil(_geoJsonLoader, CreateGeoJsonStream);
 
