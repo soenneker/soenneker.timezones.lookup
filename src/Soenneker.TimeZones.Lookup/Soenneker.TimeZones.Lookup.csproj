@@ -48,6 +48,6 @@
     <ItemGroup>
 <PackageReference Include="Soenneker.TimeZones.Data" Version="11.0.200" PrivateAssets="analyzers;build" />
 <PackageReference Include="Soenneker.Utils.File" Version="11.0.2347" />
-        <PackageReference Include="Soenneker.Utils.Paths.Resources" Version="11.0.325" />
+        <PackageReference Include="Soenneker.Utils.Paths.Resources" Version="11.0.327" />
     </ItemGroup>
 </Project>
